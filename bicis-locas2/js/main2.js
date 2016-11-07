@@ -18,15 +18,15 @@ $(document).ready(function () {//cuando el document este cargado ejecutara la fu
 		//Se usa trim para quitar los espacios en blanco
 		if (texto.trim() == "") {
 			console.log("Campo vacio");
-			var span = $('<span class="error"> Campo Vacio </span>');
+			var span = $('<span> Campo Vacio </span>');
 			$(".name-container").append(span);//crea un span con la clase errorcon ese texto y lo incrusta dentro del elemento con la clase name-container
 		} else if(!regexName.test(texto)) {//testea la expresion regular de campo vacio
 			console.log("Valor invalido");
-			var span = $('<span class="error"> Texto invalido </span>');//testea la expresion regular de primer letra mayus
+			var span = $('<span> Texto invalido </span>');//testea la expresion regular de primer letra mayus
 			$(".name-container").append(span);//lo incrusta en el elemente con clase name-container
 		}else{
 			console.log("Valor invalido");
-			var span = $('<span class="error"> validada </span>');
+			var span = $('<span> validada </span>');
 			$(".name-container").append(span);
 		}
 
@@ -36,21 +36,21 @@ $(document).ready(function () {//cuando el document este cargado ejecutara la fu
 
 	$("#lastname").keydown(function(){
 		console.log("Presiono una tecla");
-		var texto = $("#lastname").val();
+		var apellido = $("#lastname").val();
 		
 		$("span").remove();
 
-		if (texto.trim() == "") {
+		if (apellido.trim() == "") {
 			console.log("Campo vacio");
-			var span = $('<span class="error"> Campo Vacio </span>');
+			var span = $('<span> Campo Vacio </span>');
 			$(".lastname-container").append(span);
-		} else if(!regexName.test(texto)) {
+		} else if(!regexName.test(apellido)) {
 			console.log("Valor invalido");
-			var span = $('<span class="error"> Texto invalido </span>');
+			var span = $('<span> Texto invalido </span>');
 			$(".lastname-container").append(span);
 		}else{
 			console.log("Valor correcto");
-			var span = $('<span class="error"> validada </span>');
+			var span = $('<span> validada </span>');
 			$(".lastname-container").append(span);	
 		}
 	});
@@ -66,15 +66,15 @@ $(document).ready(function () {//cuando el document este cargado ejecutara la fu
 
 		if (texto.trim() == "") {
 			console.log("Campo vacio");
-			var span = $('<span class="error"> Campo Vacio </span>');
+			var span = $('<span> Campo Vacio </span>');
 			$(".email-container").append(span);
 		} else if(!regexEmail.test(texto)) {
 			console.log("Valor invalido");
-			var span = $('<span class="error"> Texto invalido </span>');
+			var span = $('<span> Texto invalido </span>');
 			$(".email-container").append(span);
 		}else{
 			console.log("Valor correcto");
-			var span = $('<span class="error"> validada </span>');
+			var span = $('<span> validada </span>');
 			$(".email-container").append(span);	
 		}
 	});
@@ -82,16 +82,29 @@ $(document).ready(function () {//cuando el document este cargado ejecutara la fu
 // VALIDAR PASSWORD
 
 	$("#input-password").keypress(function(){
-		console.log("Presiono una tecla");
-		var texto = $("#inputPassword").val();
-		
+		var contrasena = $("#inputPassword").val();
+		console.log(contrasena);
 		$("span").remove();
+		
+		/*if( contrasena == "password" ||  contrasena == "123456" || contrasena == "098754"){
+			console.log("Valor correcto");
+			var span = $('<span class="error">no puede ser "password", "123456", "098754"</span>');
+			$(".Pass").append(span);
 
-		if (inputPassword == null || inputPassword =="" ){
-			var span = $('<span class="error"> tienes que ingresar una contraseña </span>');
-			$(".form-group, .input-box")[3].append(span);
-		}else if( inputPassword == "password" ||  inputPassword == "123456" || inputPassword == "098754"){
-			
+		}else if(contrasena == null || contrasena =="" ){
+			console.log("Valor correcto");
+			var span = $('<span> tienes que ingresar una contraseña </span>');
+			$(".Pass").append(span);
+
+		}else*/
+
+		if (contrasena.length < 6 ){
+			console.log("Valor correcto");
+			var span = $('<span class="error">tienes que ingresar una contraseña con mínimo 6 carácteres</span>');
+			$(".Pass").append(span);
+
+		}else{
+			console.log("esta bien el password");
 		}
 
 	});
